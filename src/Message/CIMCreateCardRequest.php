@@ -88,6 +88,11 @@ class CIMCreateCardRequest extends CIMAbstractRequest
             $req->zip = $card->getBillingPostcode();
             $req->country = $card->getBillingCountry();
 
+            $phone = $card->getBillingPhone();
+            if (!empty($phone)) {
+                $req->phoneNumber = $phone;
+            }
+
             $req = $data->addChild('payment');
             $req->creditCard->cardNumber = $card->getNumber();
             $req->creditCard->expirationDate = $card->getExpiryDate('Y-m');

@@ -41,6 +41,11 @@ class CIMAuthorizeRequest extends CIMAbstractRequest
             $action->customerShippingAddressId = $cardRef['customerShippingAddressId'];
         }
 
+        $invoiceNumber = $this->getInvoiceNumber();
+        if (!empty($invoiceNumber)) {
+            $action->order->invoiceNumber = $invoiceNumber;
+        }
+
         $desc = $this->getDescription();
         if (!empty($desc)) {
             $action->order->description = $desc;

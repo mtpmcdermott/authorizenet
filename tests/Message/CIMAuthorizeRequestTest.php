@@ -16,7 +16,8 @@ class CIMAuthorizeRequestTest extends TestCase
             array(
                 'cardReference' => '{"customerProfileId":"28972085","customerPaymentProfileId":"26317841","customerShippingAddressId":"27057151"}',
                 'amount' => '12.00',
-                'description' => 'Test authorize transaction'
+                'description' => 'Test authorize transaction',
+                'invoiceNumber' => '100001'
             )
         );
     }
@@ -30,5 +31,6 @@ class CIMAuthorizeRequestTest extends TestCase
         $this->assertEquals('26317841', $data->transaction->profileTransAuthOnly->customerPaymentProfileId);
         $this->assertEquals('27057151', $data->transaction->profileTransAuthOnly->customerShippingAddressId);
         $this->assertEquals('Test authorize transaction', $data->transaction->profileTransAuthOnly->order->description);
+        $this->assertEquals('100001', $data->transaction->profileTransAuthOnly->order->invoiceNumber);
     }
 }

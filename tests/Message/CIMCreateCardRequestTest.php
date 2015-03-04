@@ -27,6 +27,7 @@ class CIMCreateCardRequestTest extends TestCase
         $card = $this->getValidCard();
         $this->assertEquals('12345', $data->profile->paymentProfiles->billTo->zip);
         $this->assertEquals($card['number'], $data->profile->paymentProfiles->payment->creditCard->cardNumber);
+        $this->assertEquals($card['billingPhone'], $data->profile->paymentProfiles->billTo->phoneNumber);
         $this->assertEquals('testMode', $data->validationMode);
     }
 }
